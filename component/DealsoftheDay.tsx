@@ -1,6 +1,8 @@
 "use client"
 import React from 'react';
 import { ShoppingCart, Star, ChevronRight } from 'lucide-react';
+import { useRouter } from 'next/navigation'
+import { useStore } from '@/store/Store';
 
 interface Product {
   id: number
@@ -18,11 +20,19 @@ interface Product {
 
 const DealsOfTheDay = ({data}:{data: Product[]}) => {
 
+  const router = useRouter();
+
+  const { addToCart } = useStore()
+
+  const gotoProductPage = (id: number) => {
+    router.push(`/product-details/${id}`)
+  }
+
 
   return (
     <div className="w-full bg-white py-8 md:py-12 px-4 md:px-8">
       <div className="max-w-full mx-auto">
-        {/* Header */}
+       
         <div className="flex justify-between items-center mb-6 md:mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
             Deals Of The Day
@@ -33,14 +43,15 @@ const DealsOfTheDay = ({data}:{data: Product[]}) => {
           </button>
         </div>
 
-        {/* Deals Grid */}
+       
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {data?.map((deal) => (
             <div
               key={deal.id}
               className="bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col"
+              onClick={() => gotoProductPage(deal?.id)}
             >
-              {/* Image Container */}
+              
               <div className={` relative overflow-hidden group/image`}>
                 <div className="aspect-[4/3] w-full">
                   <img
@@ -51,14 +62,13 @@ const DealsOfTheDay = ({data}:{data: Product[]}) => {
                 </div>
               </div>
 
-              {/* Content */}
               <div className="p-4 md:p-5 flex flex-col">
-                {/* Title */}
+               
                 <h3 className="text-sm md:text-base font-medium text-gray-800 mb-2 line-clamp-2 min-h-[2.5rem] md:min-h-[3rem] hover:text-emerald-500 transition-colors cursor-pointer">
                   {deal.name}
                 </h3>
 
-                {/* Rating */}
+                
                 <div className="flex items-center gap-1 mb-3">
                   {[...Array(5)].map((_, i) => (
                     <Star
@@ -74,12 +84,12 @@ const DealsOfTheDay = ({data}:{data: Product[]}) => {
                   <span className="text-xs text-gray-500 ml-1">({deal.rating})</span>
                 </div>
 
-                {/* Brand */}
+                
                 <p className="text-xs text-gray-500 mb-3">
                   By <span className="text-emerald-500">{deal.brand}</span>
                 </p>
 
-                {/* Price and Button */}
+                
                 <div className="flex items-center justify-between mt-auto pt-2">
                   <div className="flex items-center gap-2">
                     <span className="text-lg md:text-xl font-bold text-emerald-500">
@@ -89,7 +99,14 @@ const DealsOfTheDay = ({data}:{data: Product[]}) => {
                       ${deal.old_price}
                     </span>
                   </div>
-                  <button className="bg-red-500 hover:bg-red-600 text-white px-3 md:px-4 py-2 md:py-2.5 rounded-md text-xs md:text-sm font-medium flex items-center gap-1.5 transition-all hover:shadow-lg active:scale-95">
+                  <button className="bg-red-500 hover:bg-red-600 text-white px-3 md:px-4 py-2 md:py-2.5 rounded-md text-xs md:text-sm font-medium flex items-center gap-1.5 transition-all hover:shadow-lg active:scale-95"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addToCart(deal)
+                    alert("Added to Cart")
+
+                  }}
+                  >
                     <ShoppingCart size={16} />
                     <span className="hidden sm:inline">Add</span>
                   </button>

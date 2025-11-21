@@ -27,7 +27,7 @@ function CardSection() {
           className="relative rounded-3xl overflow-hidden min-h-[260px] p-4 flex items-center"
           style={{ backgroundColor: card.bg }}
         >
-          {/* Text Section */}
+         
           <div className="relative z-10 w-[55%] space-y-6">
             <h2 className="text-[1.1rem] font-bold text-slate-800 leading-snug">
               {card.title}
@@ -38,7 +38,6 @@ function CardSection() {
             </button>
           </div>
 
-          {/* Image Section */}
           <div className="absolute right-0 bottom-0 w-[30%] h-full flex items-end">
             <Image
               src={card.img}

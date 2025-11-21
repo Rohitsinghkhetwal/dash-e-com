@@ -80,11 +80,11 @@ export default function ProductDetailPage() {
             </div>
           </div>
 
-          {/* Main Content */}
+          
           <div className="lg:col-span-9">
             <div className="bg-white rounded-lg shadow-sm p-6 lg:p-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                {/* Product Image */}
+          
                 <div className="bg-gray-100 rounded-lg p-8 flex items-center justify-center">
                   <img 
                     src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=500&h=500&fit=crop" 
@@ -93,7 +93,7 @@ export default function ProductDetailPage() {
                   />
                 </div>
 
-                {/* Product Details */}
+                
                 <div>
                   <h1 className="text-2xl lg:text-3xl font-bold text-gray-800 mb-4">
                     Seeds Of Change Organic Quinoa, Brown
@@ -205,7 +205,7 @@ export default function ProductDetailPage() {
                 </div>
               </div>
 
-              {/* Tabs Section */}
+         
               <div className="border-t pt-6">
                 <div className="flex gap-6 mb-6 border-b">
                   {['description', 'information', 'review'].map((tab) => (
@@ -239,7 +239,7 @@ export default function ProductDetailPage() {
         </div>
       </div>
 
-      {/* Scroll to Top Button */}
+      
       <button
         onClick={scrollToTop}
         className="fixed bottom-8 right-8 bg-red-500 text-white p-3 rounded-full shadow-lg hover:bg-red-600 transition"

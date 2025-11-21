@@ -2,7 +2,9 @@
 "use client"
 
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { ChevronRight, Star } from 'lucide-react';
+import { useRouter } from  "next/navigation"
+import { useStore } from '@/store/Store';
 
 
 
@@ -23,71 +25,22 @@ interface Product {
 
 
 const DailyBestSells = ({data}: {data:Product[]}) => {
+  const router = useRouter()
   console.log("this is the data ", data);
   const [activeTab, setActiveTab] = useState('featured');
-  const [scrollPosition, setScrollPosition] = useState(0);
 
-  // const products = [
-  //   {
-  //     id: 1,
-  //     image: '/api/placeholder/200/200',
-  //     tag: 'Save 35%',
-  //     tagColor: 'bg-emerald-500',
-  //     name: 'All Natural Italian-Style Chicken Meatballs',
-  //     brand: 'Hodo Foods',
-  //     rating: 4.0,
-  //     price: 238.85,
-  //     oldPrice: 245.8
-  //   },
-  //   {
-  //     id: 2,
-  //     image: '/api/placeholder/200/200',
-  //     tag: 'Sale',
-  //     tagColor: 'bg-sky-400',
-  //     name: "Angie's Boomchickapop Sweet and sour",
-  //     brand: 'Hodo Foods',
-  //     rating: 4.0,
-  //     price: 238.85,
-  //     oldPrice: 245.8
-  //   },
-  //   {
-  //     id: 3,
-  //     image: '/api/placeholder/200/200',
-  //     tag: 'Best sale',
-  //     tagColor: 'bg-orange-400',
-  //     name: 'Foster Farms Takeout Crispy Classic',
-  //     brand: 'Hodo Foods',
-  //     rating: 4.0,
-  //     price: 238.85,
-  //     oldPrice: 245.8
-  //   },
-  //   {
-  //     id: 4,
-  //     image: '/api/placeholder/200/200',
-  //     tag: 'Save 15%',
-  //     tagColor: 'bg-pink-500',
-  //     name: 'Blue Diamond Almonds Lightly Salted',
-  //     brand: 'Hodo Foods',
-  //     rating: 4.0,
-  //     price: 238.85,
-  //     oldPrice: 245.8
-  //   }
-  // ];
+  const { addToCart } = useStore()
 
-  // const handleScroll = (direction) => {
-  //   const container = document.getElementById('products-container');
-  //   const scrollAmount = 300;
-  //   if (direction === 'left') {
-  //     container.scrollLeft -= scrollAmount;
-  //   } else {
-  //     container.scrollLeft += scrollAmount;
-  //   }
-  // };
+  const gotoProductPage = (id: number) => {
+    router.push(`/product-details/${id}`)
+  }
 
+
+ 
   return (
     <div className="w-full bg-white py-8 px-4 md:px-8">
       <div className="max-w-full mx-auto">
-        {/* Header */}
+        
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800">Daily Best Sells</h2>
           <div className="flex gap-4">
@@ -118,11 +71,11 @@ const DailyBestSells = ({data}: {data:Product[]}) => {
           </div>
         </div>
 
-        {/* Products Section */}
+        
         <div className="relative">
           <div className="flex gap-6">
-            {/* Hero Card - Hidden on mobile */}
-            <div className="hidden lg:block w-80 flex-shrink-0">
+            
+            <div className="hidden lg:block w-80 shrink-0">
               <div 
                 className="rounded-2xl overflow-hidden h-full relative"
                 style={{
@@ -144,21 +97,7 @@ const DailyBestSells = ({data}: {data:Product[]}) => {
               </div>
             </div>
 
-            {/* Navigation Buttons */}
-            {/* <button
-              // onClick={() => handleScroll('left')}
-              className="hidden md:flex absolute left-80 top-1/2 -translate-y-1/2 z-10 lg:left-[340px] w-10 h-10 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition-colors"
-            >
-              <ChevronLeft size={20} className="text-gray-600" />
-            </button>
-            <button
-              // onClick={() => handleScroll('right')}
-              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full shadow-lg items-center justify-center hover:bg-gray-50 transition-colors"
-            >
-              <ChevronRight size={20} className="text-gray-600" />
-            </button> */}
-
-            {/* Products Grid */}
+            
             <div 
               id="products-container"
               className="flex-1 overflow-x-auto scrollbar-hide scroll-smooth"
@@ -168,12 +107,11 @@ const DailyBestSells = ({data}: {data:Product[]}) => {
                   <div
                     key={product?.id}
                     className="bg-white border border-gray-200 rounded-2xl p-4 hover:shadow-2xl flex flex-col w-full sm:w-64"
+                    onClick={() => gotoProductPage(product?.id)}
                   >
-                    {/* Product Image */}
+                   
                     <div className="relative mb-4">
-                      {/* <span className={`absolute top-2 left-2 ${product.tagColor} text-white text-xs px-3 py-1 rounded-full font-medium`}>
-                        {product.tag}
-                      </span> */}
+                     
                       <div className="w-full flex items-center justify-center">
                         <img
                           src={product?.image_url}
@@ -183,20 +121,20 @@ const DailyBestSells = ({data}: {data:Product[]}) => {
                       </div>
                     </div>
 
-                    {/* Product Info */}
+                
                     <div className="flex-1 flex flex-col">
                       <p className="text-xs text-gray-500 mb-1">{product.brand}</p>
                       <h3 className="text-sm font-medium text-gray-800 mb-2 line-clamp-2 min-h-[40px]">
                         {product.name}
                       </h3>
 
-                      {/* Rating */}
+                      
                       <div className="flex items-center gap-1 mb-3">
                         <Star size={14} className="fill-yellow-400 text-yellow-400" />
                         <span className="text-xs text-gray-600">({product.rating})</span>
                       </div>
 
-                      {/* Price */}
+                      
                       <div className="flex items-center gap-2 mb-4">
                         <span className="text-lg font-bold text-emerald-500">
                           ${product.price}
@@ -206,8 +144,16 @@ const DailyBestSells = ({data}: {data:Product[]}) => {
                         </span>
                       </div>
 
-                      {/* Add to Cart Button */}
-                      <button className="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-lg font-medium transition-colors">
+                    
+                      <button className="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-lg font-medium transition-colors"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        addToCart(product);
+                        alert("Added to Cart !")
+
+
+                      }}
+                      >
                         Add To Cart
                       </button>
                     </div>
