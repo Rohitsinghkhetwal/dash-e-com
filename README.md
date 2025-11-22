@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## Getting Started
+
+  
 
 First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
+```bash
+
+#clone the repo 
+https://github.com/Rohitsinghkhetwal/dash-e-com.git
+
+2. npm install
+
+3. create a .env file in project.
+
+and paste this .
+
+NEXT_PUBLIC_URL=<your backend url>
+
+RUN: 
+npm  run  dev
+
+# or
+
+yarn  dev
+
+# or
+
+pnpm  dev
+
+# or
+
+bun  dev
+
+```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+  ## Folder Structure 
+  app -  app folder include all the pages routes 
+  component -   This folder include all the apps component that are render accross the application.
+  Store - It includes the Zustand Store for state management out nextjs app.
+  tsconfig - Configuration of typescript .
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Frontend Flow #
 
-## Learn More
+1. Products are shown in home page . add to cart options added.
+2. After Clicking product , detail page appears , all details about product.
+3. After doing Add to cart , Click on cart for view the product detail and placing the order.
+4. email OTP varification implementation in cart page.
+5. After clicking the place order user mail and products are saved to database and mail sent to the user .
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Live link 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Check it out .
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+https://dashecom.netlify.app/ 
