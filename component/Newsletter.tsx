@@ -29,7 +29,7 @@ const Newsletter = () => {
             </svg>
           </div>
 
-          <div className="relative grid lg:grid-cols-2 gap-8 items-center p-8 md:p-12 lg:p-16">
+          <div className="relative grid lg:grid-cols-2 gap-8 items-center p-6 md:p-12 lg:p-16">
            
             <div className="z-10">
               <h2 className="text-[1rem] md:text-[1rem] lg:text-[2rem] font-bold text-gray-800 mb-4 leading-tight">

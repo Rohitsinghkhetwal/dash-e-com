@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 "use client"
 import axios from "axios";
@@ -25,7 +26,7 @@ export default function ProductDetailPage() {
    const sizes = ["100g", "150g", "200g"]
 
 
-    const handleQuantityChange = (delta) => {
+    const handleQuantityChange = (delta:any) => {
     setQuantity(Math.max(1, quantity + delta))
   }
 
@@ -47,7 +48,7 @@ export default function ProductDetailPage() {
   }
 
 
-    fetchProducts(id)
+    fetchProducts(id as any)
 
   },[id])
 

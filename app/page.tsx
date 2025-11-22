@@ -1,7 +1,6 @@
 import AllProducts from "@/component/AllProducts";
 import CardSection from "@/component/CardSection";
 import HeroSection from "@/component/HeroSection";
-import Navbar from "@/component/Navbar";
 import Newsletter from "@/component/Newsletter";
 
 

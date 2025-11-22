@@ -104,7 +104,7 @@ function CheckoutPage() {
 
     }catch(err) {
       console.log("Something went wrong while placing order ", err)
-      if(err.response.data.error === "Email not verified") {
+      if (axios.isAxiosError(err) && err.response?.data?.error === "Email not verified") {
         alert("Email Not verified")
       }
       

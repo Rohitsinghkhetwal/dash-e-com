@@ -41,8 +41,8 @@ export default function PopularProducts({data}: {data: Product[]}) {
   return (
     <div className="w-full bg-white py-8 md:py-6 px-4 md:px-8">
       {/* Header */}
-      <div className="mb-8 flex flex-row justify-between">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Popular Products</h2>
+      <div className="mb-8 flex flex-col md:flex-row gap-4 md:gap-2 md:items-center md:justify-between">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-800">Popular Products</h2>
 
         <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 md:flex-wrap">
           {categories.map((cat) => (
@@ -68,11 +68,11 @@ export default function PopularProducts({data}: {data: Product[]}) {
             onClick={() => gotoProductPage(product.id)}
           >
             
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center p-4">
                <img
                 src={product.image_url}
                 alt="img"
-                className="max-h-full max-w-full object-contain"
+                className="max-h-40 w-full object-contain"
               />
 
             </div>

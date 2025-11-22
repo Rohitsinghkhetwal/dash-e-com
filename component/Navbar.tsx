@@ -17,9 +17,9 @@ function Navbar() {
 
   const router = useRouter();
   return (
-    <div className="w-full  bg-white">
+    <div className="w-full bg-white">
       
-      <div className="border-b border-gray-200 shadow-sm px-8 py-3 ">
+      <div className="border-b border-gray-200 shadow-sm px-4 sm:px-6 md:px-8 py-3 ">
         <div className="flex items-center justify-between max-w-7xl mx-auto ">
          
           <button className=" text-gray-700 hover:text-black">
@@ -75,8 +75,8 @@ function Navbar() {
       </div>
 
     
-      <div className="px-8 py-2">
-        <div className="flex items-center justify-between gap-8 max-w-7xl mx-auto">
+      <div className="px-4 sm:px-6 md:px-8 py-2">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-8 max-w-7xl mx-auto">
          
           <div className="flex items-center gap-3 shrink-0">
             <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
@@ -104,7 +104,7 @@ function Navbar() {
           </div>
 
           
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 sm:gap-6 mt-2 sm:mt-0 self-end sm:self-auto">
             <button className="flex items-center gap-2 text-gray-700 hover:text-black text-sm font-medium cursor-pointer">
               <User size={20} />
               <span className="hidden sm:inline">Account</span>
@@ -121,7 +121,7 @@ function Navbar() {
             >
               <ShoppingCart size={20} />
               {items.length > 0 && (
-                <span className="absolute -top-3 right-6 bg-[#E7000B] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
+                <span className="absolute -top-2 right-2 md:-top-3 md:right-6 bg-[#E7000B] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
                   {items.length}
                 </span>
               )}

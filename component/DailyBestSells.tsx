@@ -106,7 +106,7 @@ const DailyBestSells = ({data}: {data:Product[]}) => {
                 {data?.map((product) => (
                   <div
                     key={product?.id}
-                    className="bg-white border border-gray-200 rounded-2xl p-4 hover:shadow-2xl flex flex-col w-full sm:w-64"
+                    className="bg-white border border-gray-200 rounded-2xl p-4 hover:shadow-2xl flex flex-col w-full"
                     onClick={() => gotoProductPage(product?.id)}
                   >
                    
